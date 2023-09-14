@@ -1,0 +1,38 @@
+---
+import { ProjectSchema } from "../content/config";
+import BaseLayout from "./BaseLayout.astro";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+
+export interface Props extends ProjectSchema {}
+
+const { title, description, startDate, endDate, heroImage, badge, stacks } =
+  Astro.props;
+dayjs.extend(localizedFormat);
+const diplayStartDate = dayjs(startDate).format("DD-MM-YYYY");
+const diplayendDate = dayjs(endDate).format("DD-MM-YYYY");
+
+console.log(startDate)
+
+---
+
+<BaseLayout title={title} description={description} image={heroImage}>
+  <main class="md:flex md:justify-center">
+    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
+      {
+        heroImage && (
+          <img class="w-full mb-6" src={heroImage} width={750} height={422} alt={title} />
+        )
+      }
+      <h1 class="title my-2 text-4xl font-bold">{title}</h1>
+      {startDate && <time>{diplayStartDate}</time>} - 
+      {endDate && <time>{diplayendDate}</time>}
+      <br />
+      <div class="divider my-2"></div>
+      <slot />
+      {stacks &&
+        stacks.map(stack => <div class="badge badge-secondary mr-1">{stack}</div>)
+      }
+    </article>
+  </main>
+</BaseLayout>
