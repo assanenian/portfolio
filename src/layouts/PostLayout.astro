@@ -11,8 +11,6 @@ const { title, description, startDate, endDate, heroImage, badge } =
 dayjs.extend(localizedFormat);
 const diplayStartDate = dayjs(startDate).format("DD-MM-YYYY");
 const diplayendDate = dayjs(endDate).format("DD-MM-YYYY");
-startDate
-import { Image } from "@astrojs/image/components";
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
@@ -20,11 +18,9 @@ import { Image } from "@astrojs/image/components";
     <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
       {
         heroImage && (
-        <Image
-            aspectRatio={"16:9"}
+        <img
             width={750}
             height={422}
-            format="webp"
             src={heroImage}
             alt={title}
             class="w-full mb-6"

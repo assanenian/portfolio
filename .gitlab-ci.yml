@@ -1,0 +1,26 @@
+image: node:lts
+
+sast:
+  stage: test
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Jobs/Secret-Detection.gitlab-ci.yml
+
+pages:
+  stage: deploy
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install
+    - npm run build
+
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
+stages:
+  - test
+  - deploy

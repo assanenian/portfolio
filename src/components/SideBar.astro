@@ -1,6 +1,5 @@
 ---
 import SideBarFooter from "./SideBarFooter.astro";
-import { Image } from "@astrojs/image/components";
 import SideBarMenu from "./SideBarMenu.astro";
 const { sideBarActiveItemID } = Astro.props;
 import { ONLINE } from "../config";
@@ -14,7 +13,7 @@ const class_attr = "avatar transition ease-in-out hover:scale-[102%] block m-aut
       <a href="/">
         <div class={ ONLINE == "True" ? "online " + class_attr : "offline " + class_attr }>
           <div class="w-[8.5rem]">
-            <Image class="mask mask-circle" aspectRatio="1:1" format="webp" width={300} height={300} src="/profile.jpg" alt="Profile image" />
+            <img class="mask mask-circle" width={300} height={300} src="/profile.jpg" alt="Profile image" />
           </div>
         </div>
       </a>

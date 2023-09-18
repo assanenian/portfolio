@@ -65,7 +65,7 @@ const others = skills.others
           {
             experiences[i].slot?.map(s =>
               <p class="font-light text-sm flex">
-                {s.desc} {s.project_link && <a href={s.project_link} target="_blank"><Icon name="mdi:link" class="w-4"/></a> }
+                {s.desc} {s.project_link && <a href={s.project_link} target="_blank"><Icon name="mdi:web" class="w-4"/></a> }
               </p>
               <div> { s.stacks ? s.stacks.map(stack => <span class="badge badge-outline mr-1">{stack}</span>) : null } </div>
             )
