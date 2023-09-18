@@ -197,58 +197,83 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"blog copy": {
-};
-"blog": {
+		"blog": {
 "post1.md": {
 	id: "post1.md";
   slug: "post1";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "post2.md": {
 	id: "post2.md";
   slug: "post2";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "post3.md": {
 	id: "post3.md";
   slug: "post3";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
+"experiences copy": {
+};
+"experiences": {
+"experiences.mdx": {
+	id: "experiences.mdx";
+  slug: "experiences";
+  body: string;
+  collection: "experiences";
+  data: InferEntrySchema<"experiences">
+} & { render(): Render[".mdx"] };
+};
 "project": {
-"mukono_vaccination_stats copy 2.md": {
-	id: "mukono_vaccination_stats copy 2.md";
-  slug: "mukono_vaccination_stats-copy-2";
+"afyacare.mdx": {
+	id: "afyacare.mdx";
+  slug: "afyacare";
   body: string;
   collection: "project";
-  data: any
-} & { render(): Render[".md"] };
-"mukono_vaccination_stats copy 3.md": {
-	id: "mukono_vaccination_stats copy 3.md";
-  slug: "mukono_vaccination_stats-copy-3";
+  data: InferEntrySchema<"project">
+} & { render(): Render[".mdx"] };
+"apas_onf.md": {
+	id: "apas_onf.md";
+  slug: "apas_onf";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
-"mukono_vaccination_stats copy.md": {
-	id: "mukono_vaccination_stats copy.md";
-  slug: "mukono_vaccination_stats-copy";
+"base.mdx": {
+	id: "base.mdx";
+  slug: "base";
   body: string;
   collection: "project";
-  data: any
-} & { render(): Render[".md"] };
+  data: InferEntrySchema<"project">
+} & { render(): Render[".mdx"] };
+"expertes.mdx": {
+	id: "expertes.mdx";
+  slug: "expertes";
+  body: string;
+  collection: "project";
+  data: InferEntrySchema<"project">
+} & { render(): Render[".mdx"] };
 "mukono_vaccination_stats.mdx": {
 	id: "mukono_vaccination_stats.mdx";
   slug: "mukono_vaccination_stats";
   body: string;
   collection: "project";
+  data: InferEntrySchema<"project">
+} & { render(): Render[".mdx"] };
+};
+"skills": {
+"skills.mdx": {
+	id: "skills.mdx";
+  slug: "skills";
+  body: string;
+  collection: "skills";
   data: any
 } & { render(): Render[".mdx"] };
 };
@@ -258,21 +283,21 @@ declare module 'astro:content' {
   slug: "item1";
   body: string;
   collection: "store";
-  data: any
+  data: InferEntrySchema<"store">
 } & { render(): Render[".md"] };
 "item2.md": {
 	id: "item2.md";
   slug: "item2";
   body: string;
   collection: "store";
-  data: any
+  data: InferEntrySchema<"store">
 } & { render(): Render[".md"] };
 "item3.md": {
 	id: "item3.md";
   slug: "item3";
   body: string;
   collection: "store";
-  data: any
+  data: InferEntrySchema<"store">
 } & { render(): Render[".md"] };
 };
 
@@ -284,5 +309,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = never;
+	type ContentConfig = typeof import("../src/content/config");
 }

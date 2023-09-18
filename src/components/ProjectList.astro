@@ -1,30 +1,33 @@
 ---
 const { HorizontalCard } = Astro.props
+import { getCollection } from "astro:content";
+const _posts = await getCollection("project");
+_posts.sort((a, b) => b.data.position.valueOf() - a.data.position.valueOf());
+const posts = _posts.slice(0, 3)
 ---
 
 <div>
-  <div class="text-3xl w-full font-bold mb-2">Mes dernier projets {"</>"}</div>
+  <div class="text-3xl w-full font-bold mb-2">Mes dernier projets</div>
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
+  <ul>
+    {posts.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={"/projects/" + post.slug}
+          target="_self"
+          badge={post.data.badge}
+          tags={post.data.stacks}
+          startDate={post.data.startDate} 
+          endDate={post.data.endDate} 
+        />
+        <div class="divider my-0" />
+      </>
+    ))}
+  <div class="flex justify-center">
+    <a href="/projects/" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline">Voir plus</a>
+  </div>
+  </ul>
 </div>
