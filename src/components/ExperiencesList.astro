@@ -1,0 +1,42 @@
+---
+import TimeLineElement from "../components/cv/TimeLine.astro";
+import { Icon } from 'astro-icon'
+import { getCollection } from "astro:content";
+const _experiences = await getCollection("experiences");
+const experiences = _experiences.map((e) => e.data.experiences)[0].slice(0, 3);
+---
+
+<div>
+  <div>
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Mes dernières Experiences</div>
+    </div>
+
+    <div class="time-line-container mb-5">
+      {
+        experiences.map((e, i: number) => <TimeLineElement 
+          title={e.title} 
+          subtitle={e.subtitle}
+          tags={e.tags}
+          >
+          {e.slottilte && <p>{e.slottilte}</p>}
+          {
+            experiences[i].slot?.map(s =>
+              <p class="font-light text-sm flex">
+                {s.desc} {s.project_link && <a href={s.project_link} target="_blank"><Icon name="mdi:web" class="w-4"/></a> }
+              </p>
+              <div> { s.stacks ? s.stacks.map(stack => <span class="badge badge-outline mr-1">{stack}</span>) : null } </div>
+            )
+          }
+          </TimeLineElement>)
+      }
+    </div>
+    <div class="flex justify-center">
+      <a
+        href="/cv/"
+        class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline"
+        >Voir plus</a
+      >
+    </div>
+  </div>
+</div>

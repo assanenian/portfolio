@@ -22,29 +22,32 @@ const others = skills.others
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <!-- header -->
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Profile</div>
+    </div>
+    <div class="mb-5 text-justify">
+      Développeur Back-end <b>PHP</b> et <b>Symfony</b>, avec respectivement 7 ans et 5 ans
+      d’expériences.<br>
+      Durant mon parcours, j'ai participé à la réalisation de
+      plusieurs solutions basées sur les stacks suivantes : <em>PHP (7, 8), Symfony
+      (3, 4, 5, 6), API REST (API Plateforme, FastAPI, DjangoNinja), Elasticsearch
+      (ELK), Python (Pandas, Polars, SqlAlchemy, Jupyter)</em>.</br>
+      Et aujourd'hui, je mets toutes ces connaissances au profit de mes futurs clients/collaborateurs.
+      </br>
+    </div>
+    <div class="mb-5 text-1xl"><b>95130 - FRANCONVILLE, ILE DE FRANCE</b></div>
+    <div class="dropdown dropdown-hover">
+      <label tabindex="0"><Icon class="mb-5" name="mdi:qrcode-scan" class="w-8"/></label>
+      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        <img src="/projects/images/qr.png" alt="scan me">
+        <span class="text-center">scan me 😉</span>
+      </ul>
+    </div>
   </div>
-  <div class="mb-5 text-justify">
-    Développeur Back-end <b>PHP</b> et <b>Symfony</b>, avec respectivement 7 ans et 5 ans
-    d’expériences.<br>
-    Durant mon parcours, j'ai participé à la réalisation de
-    plusieurs solutions basées sur les stacks suivantes : <em>PHP (7, 8), Symfony
-    (3, 4, 5, 6), API REST (API Plateforme, FastAPI, DjangoNinja), Elasticsearch
-    (ELK), Python (Pandas, Polars, SqlAlchemy, Jupyter)</em>.</br>
-    Et aujourd'hui, je mets toutes ces connaissances au profit de mes futurs clients/collaborateurs.
-    </br>
-  </div>
-  <div class="mb-5 text-1xl"><b>95130 - FRANCONVILLE, ILE DE FRANCE</b></div>
-  <div class="dropdown dropdown-hover">
-    <label tabindex="0"><Icon class="mb-5" name="mdi:qrcode-scan" class="w-8"/></label>
-    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-      <img src="/projects/images/qr.png" alt="scan me">
-      <span class="text-center">scan me 😉</span>
-    </ul>
-  </div>
-  <div class="divider"></div>
-
+  <!-- end header -->
+  
   <!-- experiences -->
   <div>
     <div class="mb-5">
@@ -98,7 +101,7 @@ const others = skills.others
   <!-- end formations -->
 
   <!-- certifications -->
-  <div>
+  <!-- <div>
     <div class="mb-5">
       <div class="text-3xl w-full font-bold">Certifications</div>
     </div>
@@ -111,7 +114,7 @@ const others = skills.others
         <a href="#" target="_blank"> Certification Name (with link)</a>
       </li>
     </ul>
-  </div>
+  </div> -->
   <!-- end certifications -->
 
   <!-- skills -->
@@ -119,61 +122,61 @@ const others = skills.others
     <div class="mb-5">
       <div class="text-3xl w-full font-bold">Skills</div>
     </div>
-    <div class="divider">Languages</div>
+    <div class="text-1xl w-full my-2">Languages</div>
     <ul class="md:columns-12 columns-12">
       {
         languages.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">Framworks</div>
+     <div class="text-1xl w-full my-2">Framworks</div>
     <ul class="md:columns-12 columns-12">
       {
         framworks.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">Libraies & Frontend</div>
+     <div class="text-1xl w-full my-2">Libraies & Frontend</div>
     <ul class="md:columns-12 columns-12">
       {
         libs_front.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">Versionning</div>
+     <div class="text-1xl w-full my-2">Versionning</div>
     <ul class="md:columns-12 columns-12">
       {
         versionning.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">Installer & Packages Manager</div>
+     <div class="text-1xl w-full my-2">Installer & Packages Manager</div>
     <ul class="md:columns-12 columns-12">
       {
         installer.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">Data</div>
+     <div class="text-1xl w-full my-2">Data</div>
     <ul class="md:columns-12 columns-12">
       {
         data.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">Monitoring</div>
+     <div class="text-1xl w-full my-2">Monitoring</div>
     <ul class="md:columns-12 columns-12">
       {
         monitoring.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">Map</div>
+     <div class="text-1xl w-full my-2">Map</div>
     <ul class="md:columns-12 columns-12">
       {
         maps.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="divider">OS</div>
+     <div class="text-1xl w-full my-2">OS</div>
     <ul class="md:columns-12 columns-12">
       {
         os.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
-    <div class="text-start divider">Others</div>
+    <div class="text-1xl w-full my-2">Others</div>
     <ul class="md:columns-12 columns-12">
       {
         others.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)

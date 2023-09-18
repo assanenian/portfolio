@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = 'Mame A. FAYE Portfolio';
 export const SITE_DESCRIPTION = 'This is my portofolio';
+export const ONLINE = "True";
