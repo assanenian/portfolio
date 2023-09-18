@@ -1,14 +1,11 @@
 ---
 import { Icon } from 'astro-icon'
-const { title, icon, svg, link, color } = Astro.props;
+const { title, icon, isSvg, link, color } = Astro.props;
 ---
 
-<li title={ title }>
-  <a class={color ? color + " text-decoration-none" : "text-decoration-none"} href={link} target="_blank">
-    {icon && <Icon name={icon} class="w-8"/>}
-    {svg && <svg class="w-8">       
-        <image xlink:href={svg} class="w-8"/>    
-      </svg>
+<li class="tooltip" data-tip={ title }>
+    { isSvg ? 
+        <img src={icon} alt={title} class="w-8"/> 
+      : <Icon name={icon} class="w-8"/>    
     }
-  </a>
 </li>

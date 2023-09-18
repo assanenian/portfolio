@@ -220,8 +220,6 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
-"experiences copy": {
-};
 "experiences": {
 "experiences.mdx": {
 	id: "experiences.mdx";

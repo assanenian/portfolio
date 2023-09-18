@@ -1,0 +1,30 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <radialGradient id="a" cx="438.3" cy="639.01" fx="438.3" fy="639.01" r="569.94" gradientTransform="translate(4.213 5.333) scale(.21333)">
+   <stop offset="0" stop-color="#6877ec"/>
+   <stop offset="0.6" stop-color="#5362cf"/>
+   <stop offset="1" stop-color="#4352b9"/>
+  </radialGradient>
+  <radialGradient id="f" cx="259.68" cy="-34.71" fx="259.68" fy="-34.71" r="431.37" gradientTransform="translate(4.213 5.333) scale(.21333)">
+   <stop offset="0" stop-color="#fff"/>
+   <stop offset="1" stop-color="#000"/>
+  </radialGradient>
+  <linearGradient id="c" x1="0.05622" y1="-1.6809" x2="0.67114" y2="1.31852">
+   <stop offset="0" stop-color="#294ca7"/>
+   <stop offset="0.48" stop-color="#96a7d4"/>
+   <stop offset="0.84" stop-color="#e1e6f3"/>
+   <stop offset="1" stop-color="#fff"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_7">
+   <path fill="url(#a)" d="m95.48939,285.95561a277.03679,277.03679 0 0 0 141.66385,-75.94158l-195.95596,-195.96962l0,217.60999l54.29211,54.30121zm0,0" id="svg_1"/>
+   <path fill="#000000" d="m41.19501,231.65212c120.18508,0 217.60999,-97.42263 217.60999,-217.60771l-217.60999,0l0,217.60771zm0,0" id="svg_2"/>
+   <path fill="url(#c)" d="m41.19501,231.65212l8.37574,8.37574c59.02395,-2.16222 112.35103,-27.0277 151.48714,-66.14561l-5.96544,-5.95861a216.89077,216.89077 0 0 1 -153.89744,63.72848zm0,0" id="svg_3"/>
+   <path fill="#000000" d="m95.48939,285.95561a277.03679,277.03679 0 0 0 141.66385,-75.94158l-195.95596,-195.96962l0,217.60999l54.29211,54.30121zm0,0" id="svg_4"/>
+   <path fill="#ffffff" d="m237.15552,210.01402l-195.96051,-195.96962l178.14385,212.24769a278.07011,278.07011 0 0 0 17.81666,-16.27807zm0,0" id="svg_5"/>
+   <path fill="url(#f)" d="m41.19501,14.0444l153.87013,153.88151a224.6884,224.6884 0 0 0 4.05586,-4.18104l-157.92599,-149.70047zm0,0" id="svg_6"/>
+  </g>
+ </g>
+</svg>

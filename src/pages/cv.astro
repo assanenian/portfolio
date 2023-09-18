@@ -8,7 +8,17 @@ const _experiences = await getCollection("experiences");
 const experiences = _experiences.map(e => e.data.experiences)[0]
 
 const _skills = await getCollection("skills");
-const skills = _skills.map(e => e.data.skills)[0]
+const skills = _skills.map((e) => e.data.skills)[0]
+const languages = skills.languages
+const framworks = skills.framworks
+const libs_front = skills.libs_front
+const versionning = skills.versionning
+const installer = skills.installer
+const data = skills.data
+const monitoring = skills.monitoring
+const maps = skills.maps
+const os = skills.os
+const others = skills.others
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
@@ -109,14 +119,66 @@ const skills = _skills.map(e => e.data.skills)[0]
     <div class="mb-5">
       <div class="text-3xl w-full font-bold">Skills</div>
     </div>
-    
-
-    <ul class="md:columns-12 gap-4 flex">
+    <div class="divider">Languages</div>
+    <ul class="md:columns-12 columns-12">
       {
-        skills.map(s => <SkillElement title={s.title} icon={s.icon} svg={s.svg} link={s.link} color={s.color} />)
+        languages.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">Framworks</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        framworks.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">Libraies & Frontend</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        libs_front.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">Versionning</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        versionning.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">Installer & Packages Manager</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        installer.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">Data</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        data.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">Monitoring</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        monitoring.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">Map</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        maps.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="divider">OS</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        os.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+      }
+    </ul>
+    <div class="text-start divider">Others</div>
+    <ul class="md:columns-12 columns-12">
+      {
+        others.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
       }
     </ul>
   </div>
   <!-- end skills -->
-
 </BaseLayout>
