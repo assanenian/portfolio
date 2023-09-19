@@ -2,8 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 import SkillElement from "../components/cv/Skill.astro";
+import PdfConversion from "../components/PdfConversion.astro";
 import { Icon } from 'astro-icon';
-
 import { getCollection } from "astro:content";
 const _experiences = await getCollection("experiences");
 const experiences = _experiences.map(e => e.data.experiences)[0]
@@ -20,35 +20,6 @@ const monitoring = skills.monitoring
 const maps = skills.maps
 const os = skills.os
 const others = skills.others
-
-function addScript(url) {
-     var script = document.createElement('script');
-     script.type = 'application/javascript';
-     script.src = url;
-     document.head.appendChild(script);
-     console.log(url);
-     
- }
-
-addScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js');
-
-// const element = document.getElementById('cv-page');
-// const opt = {
-//   margin:       1,
-//   filename:     'myfile.pdf',
-//   image:        { type: 'jpeg', quality: 0.98 },
-//   html2canvas:  { scale: 2 },
-//   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-// };
-
-
-
-// // New Promise-based usage:
-// html2pdf().set(opt).from(element).save();
- 
-// // Old monolithic-style usage:
-// html2pdf(element, opt);
-
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
@@ -76,6 +47,9 @@ addScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bu
           <span class="text-center">scan me 😉</span>
         </ul>
       </div>
+      <PdfConversion />
+      ici
+
     </div>
     <!-- end header -->
     

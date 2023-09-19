@@ -1,0 +1,42 @@
+<div>
+    <div id="elementToConvert">
+       coucou
+    </div>
+    <button id="btn-cv">Convertir en PDF</button>
+</div>
+
+
+<script>
+    import html2pdf from 'html2pdf.js';
+  
+    // Sélectionnez l'élément HTML que vous souhaitez convertir en PDF
+    const elementToConvert = document.getElementById('elementToConvert');
+    const btnCv = document.getElementById('btn-cv');
+    btnCv?.addEventListener('click', () => {
+        convertToPdf();
+    })
+    function convertToPdf() {
+      // Options de configuration pour html2pdf
+      const pdfOptions = {
+        margin: 10,
+        filename: '../../public/document.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      };
+  
+      // Convertissez l'élément HTML en PDF
+      html2pdf()
+        .from(elementToConvert)
+        .set(pdfOptions);
+    
+    html2pdf().outputPdf((pdf) => {
+            console.log(pdf);
+          // Téléchargez le PDF généré
+          pdf.save();
+        });
+
+    console.log(html2pdf);
+    }
+</script>
+  
