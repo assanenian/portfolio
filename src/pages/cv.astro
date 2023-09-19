@@ -2,7 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 import SkillElement from "../components/cv/Skill.astro";
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon';
+
 import { getCollection } from "astro:content";
 const _experiences = await getCollection("experiences");
 const experiences = _experiences.map(e => e.data.experiences)[0]
@@ -19,169 +20,201 @@ const monitoring = skills.monitoring
 const maps = skills.maps
 const os = skills.os
 const others = skills.others
+
+function addScript(url) {
+     var script = document.createElement('script');
+     script.type = 'application/javascript';
+     script.src = url;
+     document.head.appendChild(script);
+     console.log(url);
+     
+ }
+
+addScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js');
+
+// const element = document.getElementById('cv-page');
+// const opt = {
+//   margin:       1,
+//   filename:     'myfile.pdf',
+//   image:        { type: 'jpeg', quality: 0.98 },
+//   html2canvas:  { scale: 2 },
+//   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+// };
+
+
+
+// // New Promise-based usage:
+// html2pdf().set(opt).from(element).save();
+ 
+// // Old monolithic-style usage:
+// html2pdf(element, opt);
+
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
-  <!-- header -->
-  <div class="mb-5">
+  <div id="cv-page">
+    <!-- header -->
     <div class="mb-5">
-      <div class="text-3xl w-full font-bold">Profile</div>
+      <div class="mb-5">
+        <div class="text-3xl w-full font-bold">Profile</div>
+      </div>
+      <div class="mb-5 text-justify">
+        Développeur Back-end <b>PHP</b> et <b>Symfony</b>, avec respectivement 7 ans et 5 ans
+        d’expériences.<br>
+        Durant mon parcours, j'ai participé à la réalisation de
+        plusieurs solutions basées sur les stacks suivantes : <em>PHP (7, 8), Symfony
+        (3, 4, 5, 6), API REST (API Plateforme, FastAPI, DjangoNinja), Elasticsearch
+        (ELK), Python (Pandas, Polars, SqlAlchemy, Jupyter)</em>.</br>
+        Et aujourd'hui, je mets toutes ces connaissances au profit de mes futurs clients/collaborateurs.
+        </br>
+      </div>
+      <div class="mb-5 text-1xl"><b>95130 - FRANCONVILLE, ILE DE FRANCE</b></div>
+      <div class="dropdown dropdown-hover">
+        <label tabindex="0"><Icon class="mb-5" name="mdi:qrcode-scan" class="w-8"/></label>
+        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+          <img src="/projects/images/qr.png" alt="scan me">
+          <span class="text-center">scan me 😉</span>
+        </ul>
+      </div>
     </div>
-    <div class="mb-5 text-justify">
-      Développeur Back-end <b>PHP</b> et <b>Symfony</b>, avec respectivement 7 ans et 5 ans
-      d’expériences.<br>
-      Durant mon parcours, j'ai participé à la réalisation de
-      plusieurs solutions basées sur les stacks suivantes : <em>PHP (7, 8), Symfony
-      (3, 4, 5, 6), API REST (API Plateforme, FastAPI, DjangoNinja), Elasticsearch
-      (ELK), Python (Pandas, Polars, SqlAlchemy, Jupyter)</em>.</br>
-      Et aujourd'hui, je mets toutes ces connaissances au profit de mes futurs clients/collaborateurs.
-      </br>
+    <!-- end header -->
+    
+    <!-- experiences -->
+    <div>
+      <div class="mb-5">
+        <div class="text-3xl w-full font-bold">Experiences</div>
+      </div>
+
+      <div class="time-line-container mb-10">
+        {
+          experiences.map((e, i: number) => <TimeLineElement 
+            title={e.title} 
+            subtitle={e.subtitle}
+            tags={e.tags}
+            >
+            {e.slottilte && <p>{e.slottilte}</p>}
+            {
+              experiences[i].slot?.map(s =>
+                <p class="font-light text-sm flex">
+                  {s.desc} {s.project_link && <a href={s.project_link} target="_blank"><Icon name="mdi:web" class="w-4"/></a> }
+                </p>
+                <div> { s.stacks ? s.stacks.map(stack => <span class="badge badge-outline mr-1">{stack}</span>) : null } </div>
+              )
+            }
+            </TimeLineElement>)
+        }
+
+      </div>
     </div>
-    <div class="mb-5 text-1xl"><b>95130 - FRANCONVILLE, ILE DE FRANCE</b></div>
-    <div class="dropdown dropdown-hover">
-      <label tabindex="0"><Icon class="mb-5" name="mdi:qrcode-scan" class="w-8"/></label>
-      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-        <img src="/projects/images/qr.png" alt="scan me">
-        <span class="text-center">scan me 😉</span>
+    <!-- end experiences -->
+
+    <!-- formations -->
+    <div>
+      <div class="mb-5">
+        <div class="text-3xl w-full font-bold">Formations</div>
+      </div>
+
+      <div class="time-line-container grid gap-4 mb-10">
+        <TimeLineElement
+          title="ECS (European Communication School)"
+          subtitle="Sep 2017 - Jun 2019 Toulouse, France"
+        >
+          <em>Master Developpment web et Marketing digital</em>
+        </TimeLineElement>
+        <TimeLineElement
+          title="ESTM (Ecole Supérieure de Technologie et de Management de Dakar)"
+          subtitle="Sep 2011 - Jui 2014 Dakar, Senegal"
+        >
+          <em>Licence Téléinformatique parcours génie logiciel et administrateur réseaux</em>
+        </TimeLineElement>
+      </div>
+    </div>
+    <!-- end formations -->
+
+    <!-- certifications -->
+    <!-- <div>
+      <div class="mb-5">
+        <div class="text-3xl w-full font-bold">Certifications</div>
+      </div>
+
+      <ul class="list-disc mx-6 mb-10 grid gap-2">
+        <li>
+          <a href="#" target="_blank"> Certification Name (with link)</a>
+        </li>
+        <li>
+          <a href="#" target="_blank"> Certification Name (with link)</a>
+        </li>
+      </ul>
+    </div> -->
+    <!-- end certifications -->
+
+    <!-- skills -->
+    <div>
+      <div class="mb-5">
+        <div class="text-3xl w-full font-bold">Skills</div>
+      </div>
+      <div class="text-1xl w-full my-2">Languages</div>
+      <ul class="md:columns-1 columns-1">
+        {
+          languages.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Framworks</div>
+      <ul class="md:columns-1 columns-1">
+        {
+          framworks.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Libraies & Frontend</div>
+      <ul class="md:columns-1 columns-1">
+        {
+          libs_front.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Versionning</div>
+      <ul class="md:columns-1 columns-1">
+        {
+          versionning.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Installer & Packages Manager</div>
+      <ul class="md:columns-1 columns-1">
+        {
+          installer.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Data</div>
+      <ul class="md:columns-13 columns-13">
+        {
+          data.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Monitoring</div>
+      <ul class="md:columns-1 columns-1">
+        {
+          monitoring.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Map</div>
+      <ul class="md:columns-1 columns-1">
+        {
+          maps.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">OS</div>
+      <ul class="md:columns-6 columns-6">
+        {
+          os.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
+      </ul>
+      <div class="text-1xl w-full my-2">Others</div>
+      <ul class="md:columns-6 columns-6">
+        {
+          others.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
+        }
       </ul>
     </div>
+    <!-- end skills -->
   </div>
-  <!-- end header -->
-  
-  <!-- experiences -->
-  <div>
-    <div class="mb-5">
-      <div class="text-3xl w-full font-bold">Experiences</div>
-    </div>
-
-    <div class="time-line-container mb-10">
-      {
-        experiences.map((e, i: number) => <TimeLineElement 
-          title={e.title} 
-          subtitle={e.subtitle}
-          tags={e.tags}
-          >
-          {e.slottilte && <p>{e.slottilte}</p>}
-          {
-            experiences[i].slot?.map(s =>
-              <p class="font-light text-sm flex">
-                {s.desc} {s.project_link && <a href={s.project_link} target="_blank"><Icon name="mdi:web" class="w-4"/></a> }
-              </p>
-              <div> { s.stacks ? s.stacks.map(stack => <span class="badge badge-outline mr-1">{stack}</span>) : null } </div>
-            )
-          }
-          </TimeLineElement>)
-      }
-
-    </div>
-  </div>
-  <!-- end experiences -->
-
-  <!-- formations -->
-  <div>
-    <div class="mb-5">
-      <div class="text-3xl w-full font-bold">Formations</div>
-    </div>
-
-    <div class="time-line-container grid gap-4 mb-10">
-      <TimeLineElement
-        title="ECS (European Communication School)"
-        subtitle="Sep 2017 - Jun 2019 Toulouse, France"
-      >
-        <em>Master Developpment web et Marketing digital</em>
-      </TimeLineElement>
-      <TimeLineElement
-        title="ESTM (Ecole Supérieure de Technologie et de Management de Dakar)"
-        subtitle="Sep 2011 - Jui 2014 Dakar, Senegal"
-      >
-        <em>Licence Téléinformatique parcours génie logiciel et administrateur réseaux</em>
-      </TimeLineElement>
-    </div>
-  </div>
-  <!-- end formations -->
-
-  <!-- certifications -->
-  <!-- <div>
-    <div class="mb-5">
-      <div class="text-3xl w-full font-bold">Certifications</div>
-    </div>
-
-    <ul class="list-disc mx-6 mb-10 grid gap-2">
-      <li>
-        <a href="#" target="_blank"> Certification Name (with link)</a>
-      </li>
-      <li>
-        <a href="#" target="_blank"> Certification Name (with link)</a>
-      </li>
-    </ul>
-  </div> -->
-  <!-- end certifications -->
-
-  <!-- skills -->
-  <div>
-    <div class="mb-5">
-      <div class="text-3xl w-full font-bold">Skills</div>
-    </div>
-    <div class="text-1xl w-full my-2">Languages</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        languages.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">Framworks</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        framworks.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">Libraies & Frontend</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        libs_front.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">Versionning</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        versionning.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">Installer & Packages Manager</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        installer.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">Data</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        data.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">Monitoring</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        monitoring.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">Map</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        maps.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-     <div class="text-1xl w-full my-2">OS</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        os.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-    <div class="text-1xl w-full my-2">Others</div>
-    <ul class="md:columns-12 columns-12">
-      {
-        others.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-      }
-    </ul>
-  </div>
-  <!-- end skills -->
 </BaseLayout>
+

@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon'
 const { title, icon, isSvg, link, color } = Astro.props;
 ---
 
-<li class="tooltip" data-tip={ title }>
+<li class="tooltip ml-4" data-tip={ title }>
     { isSvg ? 
         <img src={icon} alt={title} class="w-8"/> 
       : <Icon name={icon} class="w-8"/>    
