@@ -8,9 +8,9 @@ const t = useTranslations(lang);
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-    <li><a class="py-3 text-base" id="projects" href="/projects/">Projects</a></li>
-    <li><a class="py-3 text-base" id="cv" href="/cv">CV</a></li>
+    <li><a class="py-3 text-base" id="home" href={`/${lang}/`}>{t('nav.home')}</a></li>
+    <li><a class="py-3 text-base" id="projects" href={`/${lang}/projects/`}>{t('nav.projects')}</a></li>
+    <li><a class="py-3 text-base" id="cv" href={`/${lang}/cv/`}>CV</a></li>
     <li>
         <a
             class="py-3 text-base"

@@ -1,12 +1,15 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import TimeLineElement from "../components/cv/TimeLine.astro";
-import SkillElement from "../components/cv/Skill.astro";
-import PdfConversion from "../components/PdfConversion.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TimeLineElement from "../../components/cv/TimeLine.astro";
+import SkillElement from "../../components/cv/Skill.astro";
 import { Icon } from 'astro-icon';
 import { getCollection } from "astro:content";
 const _experiences = await getCollection("experiences");
 const experiences = _experiences.map(e => e.data.experiences)[0]
+
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const _skills = await getCollection("skills");
 const skills = _skills.map((e) => e.data.skills)[0]
@@ -27,19 +30,18 @@ const others = skills.others
     <!-- header -->
     <div class="mb-5">
       <div class="mb-5">
-        <div class="text-3xl w-full font-bold">Profile</div>
+        <div class="text-3xl w-full font-bold">{t("profil")}</div>
       </div>
       <div class="mb-5 text-justify">
-        Développeur Back-end <b>PHP</b> et <b>Symfony</b>, avec respectivement 7 ans et 5 ans
-        d’expériences.<br>
-        Durant mon parcours, j'ai participé à la réalisation de
-        plusieurs solutions basées sur les stacks suivantes : <em>PHP (7, 8), Symfony
-        (3, 4, 5, 6), API REST (API Plateforme, FastAPI, DjangoNinja), Elasticsearch
-        (ELK), Python (Pandas, Polars, SqlAlchemy, Jupyter)</em>.</br>
-        Et aujourd'hui, je mets toutes ces connaissances au profit de mes futurs clients/collaborateurs.
+        Back-end Developer with <b>PHP</b> and <b>Symfony</b>, with 7 years and 5 years of experience, respectively.<br>
+        During my journey, I have been involved in the development of several solutions based on the following technology stacks: 
+        <em>PHP (7, 8), Symfony (3, 4, 5, 6), RESTful APIs (API Platform, FastAPI, DjangoNinja), Elasticsearch (ELK), 
+          Python (Pandas, Polars, SqlAlchemy, Jupyter).
+        </em></br>
+        And today, I am leveraging all this knowledge for the benefit of my future clients and collaborators.
         </br>
       </div>
-      <div class="mb-5 text-1xl"><b>95130 - FRANCONVILLE, ILE DE FRANCE</b></div>
+      <div class="mb-5 text-1xl flex"><Icon name="mdi:google-maps" class="w-6"/><b>{t("address")}</b></div>
       <div class="dropdown dropdown-hover">
         <label tabindex="0"><Icon class="mb-5" name="mdi:qrcode-scan" class="w-8"/></label>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -47,16 +49,13 @@ const others = skills.others
           <span class="text-center">scan me 😉</span>
         </ul>
       </div>
-      <PdfConversion />
-      ici
-
     </div>
     <!-- end header -->
     
     <!-- experiences -->
     <div>
       <div class="mb-5">
-        <div class="text-3xl w-full font-bold">Experiences</div>
+        <div class="text-3xl w-full font-bold">{t("experiences")}</div>
       </div>
 
       <div class="time-line-container mb-10">
@@ -85,7 +84,7 @@ const others = skills.others
     <!-- formations -->
     <div>
       <div class="mb-5">
-        <div class="text-3xl w-full font-bold">Formations</div>
+        <div class="text-3xl w-full font-bold">{t("formations")}</div>
       </div>
 
       <div class="time-line-container grid gap-4 mb-10">
@@ -93,13 +92,13 @@ const others = skills.others
           title="ECS (European Communication School)"
           subtitle="Sep 2017 - Jun 2019 Toulouse, France"
         >
-          <em>Master Developpment web et Marketing digital</em>
+          <em>{t("ecs")}</em>
         </TimeLineElement>
         <TimeLineElement
           title="ESTM (Ecole Supérieure de Technologie et de Management de Dakar)"
           subtitle="Sep 2011 - Jui 2014 Dakar, Senegal"
         >
-          <em>Licence Téléinformatique parcours génie logiciel et administrateur réseaux</em>
+          <em>{t("estm")}</em>
         </TimeLineElement>
       </div>
     </div>
@@ -125,7 +124,7 @@ const others = skills.others
     <!-- skills -->
     <div>
       <div class="mb-5">
-        <div class="text-3xl w-full font-bold">Skills</div>
+        <div class="text-3xl w-full font-bold">{t("skills")}</div>
       </div>
       <div class="text-1xl w-full my-2">Languages</div>
       <ul class="md:columns-1 columns-1">

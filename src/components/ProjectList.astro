@@ -1,14 +1,20 @@
 ---
 const { HorizontalCard } = Astro.props
 import { getCollection } from "astro:content";
-const _posts = await getCollection("project");
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const conllection_path = (lang == "en") ? "project_en" : "project_fr"
+const _posts = await getCollection(conllection_path);
 _posts.sort((a, b) => b.data.position.valueOf() - a.data.position.valueOf());
 const posts = _posts.slice(0, 3)
+console.log(posts);
+
 ---
 
 <div>
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold mb-2">Mes dernier projets</div>
+    <div class="text-3xl w-full font-bold mb-2">{t('last_projects')}</div>
   </div>
 
   <ul>
@@ -18,17 +24,17 @@ const posts = _posts.slice(0, 3)
           title={post.data.title}
           img={post.data.heroImage}
           desc={post.data.description}
-          url={"/projects/" + post.slug}
+          url={`/${lang}/projects/` + post.slug}
           target="_self"
-          badge={post.data.badge}
-          tags={post.data.stacks}
+          badges={post.data.badges}
+          stacks={post.data.stacks}
           startDate={post.data.startDate} 
           endDate={post.data.endDate} 
         />
       </>
     ))}
   <div class="flex justify-center">
-    <a href="/projects/" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline">Voir plus</a>
+    <a href={`/${lang}/projects/`} class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline">{t("more")}</a>
   </div>
   </ul>
 </div>

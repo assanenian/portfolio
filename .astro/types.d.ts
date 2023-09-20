@@ -198,49 +198,93 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"experiences": {
-"experiences.mdx": {
-	id: "experiences.mdx";
-  slug: "experiences";
+"en.mdx": {
+	id: "en.mdx";
+  slug: "en";
+  body: string;
+  collection: "experiences";
+  data: InferEntrySchema<"experiences">
+} & { render(): Render[".mdx"] };
+"fr.mdx": {
+	id: "fr.mdx";
+  slug: "fr";
   body: string;
   collection: "experiences";
   data: InferEntrySchema<"experiences">
 } & { render(): Render[".mdx"] };
 };
-"project": {
+"project_en": {
 "afyacare.mdx": {
 	id: "afyacare.mdx";
   slug: "afyacare";
   body: string;
-  collection: "project";
-  data: InferEntrySchema<"project">
+  collection: "project_en";
+  data: any
 } & { render(): Render[".mdx"] };
 "apas_onf.md": {
 	id: "apas_onf.md";
   slug: "apas_onf";
   body: string;
-  collection: "project";
-  data: InferEntrySchema<"project">
+  collection: "project_en";
+  data: any
 } & { render(): Render[".md"] };
 "base.mdx": {
 	id: "base.mdx";
   slug: "base";
   body: string;
-  collection: "project";
-  data: InferEntrySchema<"project">
+  collection: "project_en";
+  data: any
 } & { render(): Render[".mdx"] };
 "expertes.mdx": {
 	id: "expertes.mdx";
   slug: "expertes";
   body: string;
-  collection: "project";
-  data: InferEntrySchema<"project">
+  collection: "project_en";
+  data: any
 } & { render(): Render[".mdx"] };
 "mukono_vaccination_stats.mdx": {
 	id: "mukono_vaccination_stats.mdx";
   slug: "mukono_vaccination_stats";
   body: string;
-  collection: "project";
-  data: InferEntrySchema<"project">
+  collection: "project_en";
+  data: any
+} & { render(): Render[".mdx"] };
+};
+"project_fr": {
+"afyacare.mdx": {
+	id: "afyacare.mdx";
+  slug: "afyacare";
+  body: string;
+  collection: "project_fr";
+  data: any
+} & { render(): Render[".mdx"] };
+"apas_onf.md": {
+	id: "apas_onf.md";
+  slug: "apas_onf";
+  body: string;
+  collection: "project_fr";
+  data: any
+} & { render(): Render[".md"] };
+"base.mdx": {
+	id: "base.mdx";
+  slug: "base";
+  body: string;
+  collection: "project_fr";
+  data: any
+} & { render(): Render[".mdx"] };
+"expertes.mdx": {
+	id: "expertes.mdx";
+  slug: "expertes";
+  body: string;
+  collection: "project_fr";
+  data: any
+} & { render(): Render[".mdx"] };
+"mukono_vaccination_stats.mdx": {
+	id: "mukono_vaccination_stats.mdx";
+  slug: "mukono_vaccination_stats";
+  body: string;
+  collection: "project_fr";
+  data: any
 } & { render(): Render[".mdx"] };
 };
 "skills": {
@@ -249,7 +293,7 @@ declare module 'astro:content' {
   slug: "skills";
   body: string;
   collection: "skills";
-  data: any
+  data: InferEntrySchema<"skills">
 } & { render(): Render[".mdx"] };
 };
 

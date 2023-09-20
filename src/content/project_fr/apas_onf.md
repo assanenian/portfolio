@@ -4,6 +4,7 @@ description: "Solution de gestion de l'association pour lâ€™action sociale de lâ
 startDate: "Nov 2017"
 endDate: "Oct 2019"
 heroImage:  "/projects/images/apas-onf.jpg"
+scopes: ["Association", "Social Action", "Custom Solution", "Collaboration", "Forest Management"]
 position: 4
 stacks: 
     - "PHP.7"

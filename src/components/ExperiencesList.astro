@@ -3,13 +3,17 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 import { Icon } from 'astro-icon'
 import { getCollection } from "astro:content";
 const _experiences = await getCollection("experiences");
-const experiences = _experiences.map((e) => e.data.experiences)[0].slice(0, 3);
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const e = lang=="en" ? 0 : 1;
+const experiences = _experiences.map((e) => e.data.experiences)[e].slice(0, 3);
+const t = useTranslations(lang);
 ---
 
 <div>
   <div>
     <div class="mb-5">
-      <div class="text-3xl w-full font-bold">Mes dernières Experiences</div>
+      <div class="text-3xl w-full font-bold">{t('last_projects')}</div>
     </div>
 
     <div class="time-line-container mb-5">
@@ -17,7 +21,7 @@ const experiences = _experiences.map((e) => e.data.experiences)[0].slice(0, 3);
         experiences.map((e, i: number) => <TimeLineElement 
           title={e.title} 
           subtitle={e.subtitle}
-          tags={e.tags}
+          scopes={e.scopes}
           >
           {e.slottilte && <p>{e.slottilte}</p>}
           {
@@ -33,10 +37,9 @@ const experiences = _experiences.map((e) => e.data.experiences)[0].slice(0, 3);
     </div>
     <div class="flex justify-center">
       <a
-        href="/cv/"
+        href={`/${lang}/cv/`}
         class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline"
-        >Voir plus</a
-      >
+        >{t("more")}</a>
     </div>
   </div>
 </div>

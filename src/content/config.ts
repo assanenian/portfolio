@@ -1,11 +1,10 @@
 import { z, defineCollection } from "astro:content";
-import { languages } from "../i18n/ui";
 
 const experiencesSchema = z.object({
   experiences: z.array(
     z.object({
       title: z.string(),
-      tags: z.array(z.string()).optional(),
+      scopes: z.array(z.string()).optional(),
       subtitle: z.string(),
       slottilte: z.string().optional(),
       slot: z
@@ -46,7 +45,7 @@ const projectSchema = z.object({
   position: z.number(),
   updatedDate: z.string().optional(),
   heroImage: z.string().optional(),
-  badge: z.string().optional(),
+  scopes: z.array(z.string()).optional(),
   stacks: z.array(z.string()).optional(),
   link: z.string().optional(),
 });
@@ -63,5 +62,5 @@ const skillsCollection = defineCollection({ schema: skillsSchema });
 export const collections = {
   project: projectCollection,
   experiences: experiencesCollection,
-  skills: skillsSchema,
+  skills: skillsCollection,
 };

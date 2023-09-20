@@ -1,5 +1,5 @@
 ---
-const { title, subtitle, tags } = Astro.props;
+const { title, subtitle, scopes } = Astro.props;
 ---
 
 <div class="flex">
@@ -9,10 +9,10 @@ const { title, subtitle, tags } = Astro.props;
   </div>
   <div class="experience__data bd-grid px-5 mt-3">
     <h3 class="font-semibold mb-1">{title}</h3>
-    {tags &&
-      tags.map(t => <span class="badge badge-secondary mr-1 text-xs" title={t}>{t}</span>)
+    {scopes &&
+      scopes.map(t => <span class="badge badge-secondary mr-1 text-xs" title={t}>{t}</span>)
     }
-    {tags && <br>}<span class="font-light text-sm">{subtitle}</span>
+    {scopes && <br>}<span class="font-light text-sm">{subtitle}</span>
     <p class="my-2 text-justify">
       <slot />
     </p>

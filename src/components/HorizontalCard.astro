@@ -1,8 +1,10 @@
 ---
-const { title, img, desc, url, badge, tags, target = "_blank", startDate = null, endDate = null} = Astro.props;
+const { title, img, desc, url, scopes, stacks, target = "_blank", startDate = null, endDate = null} = Astro.props;
 import dayjs from "dayjs";
 const diplayStartDate = dayjs(startDate).format("MMM-YYYY");
 const diplayendDate = dayjs(endDate).format("MMM-YYYY");
+console.log(stacks);
+
 ---
 
 <div
@@ -18,15 +20,18 @@ const diplayendDate = dayjs(endDate).format("MMM-YYYY");
       <div class="grow w-full">
         <h1 class="text-xl font-bold">
           {title}
-          <!-- {diplayStartDate && } -->
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
+          <br>
+          {
+            scopes &&
+            scopes.map((scope) => <div class="badge badge-secondary mr-1">{scope}</div>)
+          }
         </h1>
         <span class="text-gray-500">{startDate && <time>{diplayStartDate}</time>} - {endDate && <time>{diplayendDate}</time>}</span>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-start">
           {
-            tags &&
-              tags.map((tag) => <div class="badge badge-outline">{tag}</div>)
+            stacks &&
+            stacks.map((stack) => <div class="badge badge-outline">{stack}</div>)
           }
         </div>
       </div>

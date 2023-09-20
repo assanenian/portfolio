@@ -1,12 +1,15 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import HorizontalCard from "../../components/HorizontalCard.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import HorizontalCard from "../../../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-const pageTitle = 'Projects'
-const posts = await getCollection("project");
+const pageTitle = 'Projets'
+const posts = await getCollection("project_fr");
+
+import { getLangFromUrl } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection('project');
+  const posts = await getCollection('project_fr');
   posts.sort((a, b) => b.data.position.valueOf() - a.data.position.valueOf());
   return paginate(posts, { pageSize: 10 });
 }
@@ -35,10 +38,10 @@ const _page = (page.currentPage != page.lastPage) ? page.data.length * page.curr
               desc={post.data.description}
               startDate={post.data.startDate} 
               endDate={post.data.endDate} 
-              url={"/projects/" + post.slug}
+              url={`/${lang}/projects/` + post.slug}
               target="_self"
-              badge={post.data.badge}
-              tags={post.data.stacks}
+              scopes={post.data.scopes}
+              stacks={post.data.stacks}
             />
             <div class="divider my-0" />
           </>

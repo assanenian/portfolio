@@ -6,7 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 
 export interface Props extends ProjectSchema {}
 
-const { title, description, startDate, endDate, heroImage, badge, stacks, link } =
+const { title, description, startDate, endDate, heroImage, scopes, stacks, link } =
   Astro.props;
 dayjs.extend(localizedFormat);
 const diplayStartDate = dayjs(startDate).format("MMM-YYYY");
@@ -23,17 +23,25 @@ import { Icon } from 'astro-icon'
         )
       }
       <div class="flex">
-        <h1 class="title my-2 text-4xl font-bold">{title}</h1>
+        <h1 class="title my-2 text-4xl font-bold">{title}</h1><br>
         <a href={link} class="pt-3" target="_blank">{link && <Icon name="mdi:web" class="w-8 p-0 m-0"/>}</a>
+      </div>
+      <div class="flex">
+        {
+          scopes &&
+          scopes.map((scope) => <div class="badge badge-secondary mr-1">{scope}</div>)
+        }
       </div>
       <span class="text-gray-500"> 
         {startDate && <time>{diplayStartDate}</time>} - {endDate && <time>{diplayendDate}</time>}
       </span>
       <br />
       <div class="divider my-2"></div>
-      {stacks &&
-        stacks.map(stack => <span class="badge badge-secondary mr-1" title={stack}>{stack}</span>)
-      }
+      <div> 
+        {stacks &&
+          stacks.map(stack => <span class="badge badge-outline mr-1" title={stack}>{stack}</span>)
+        }
+      </div>
       <slot />
     </article>
   </main>
