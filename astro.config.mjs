@@ -8,6 +8,9 @@ import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astrofy-template.netlify.app',
-  integrations: [mdx(), sitemap(), tailwind(), compress()]
+  site: 'https://bdou.org',
+  integrations: [mdx(), sitemap(), tailwind(), compress()],
+  redirects: {
+    '/': '/en/'
+  }
 });

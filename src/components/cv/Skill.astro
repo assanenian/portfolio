@@ -1,11 +1,80 @@
 ---
-import { Icon } from 'astro-icon'
-const { title, icon, isSvg, link, color } = Astro.props;
+const {skills, Icon, t} = Astro.props
+import SkillElement from "./SkillElement.astro";
+const languages = skills.languages
+const framworks = skills.framworks
+const libs_front = skills.libs_front
+const versionning = skills.versionning
+const installer = skills.installer
+const data = skills.data
+const monitoring = skills.monitoring
+const maps = skills.maps
+const os = skills.os
+const others = skills.others
 ---
+<div class="text-1xl w-full my-2">Languages</div>
+<ul class="md:columns-1 columns-1">
+  {
+    languages.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Framworks</div>
+<ul class="md:columns-1 columns-1">
+  {
+    framworks.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Libraies & Frontend</div>
+<ul class="md:columns-1 columns-1">
+  {
+    libs_front.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Versionning</div>
+<ul class="md:columns-1 columns-1">
+  {
+    versionning.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Installer & Packages Manager</div>
+<ul class="md:columns-1 columns-1">
+  {
+    installer.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Data</div>
+<ul class="md:columns-13 columns-13">
+  {
+    data.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Monitoring</div>
+<ul class="md:columns-1 columns-1">
+  {
+    monitoring.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Map</div>
+<ul class="md:columns-1 columns-1">
+  {
+    maps.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">OS</div>
+<ul class="md:columns-6 columns-6">
+  {
+    os.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
+<div class="text-1xl w-full my-2">Others</div>
+<ul class="md:columns-6 columns-6">
+  {
+    others.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+  }
+</ul>
 
-<li class="tooltip ml-4" data-tip={ title }>
-    { isSvg ? 
-        <img src={icon} alt={title} class="w-8"/> 
-      : <Icon name={icon} class="w-8"/>    
-    }
-</li>
+<div> 
+  <span class="float-right flex">
+    <Icon name="mdi:check-decagram" class="w-5"/>{t("level")}
+  </span>
+</div>

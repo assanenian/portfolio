@@ -1,0 +1,12 @@
+---
+import { Icon } from 'astro-icon'
+const { title, icon, isSvg, link, level } = Astro.props;
+---
+
+<li class="tooltip ml-4" data-tip={ title }>
+  <div class="absolute inline-flex justify-center w-6 h-6 -top-3 -right-3">{level && <Icon name={level} class="w-5"/>}</div>
+    { isSvg ? 
+        <img src={icon} alt={title} class="w-8"/> 
+      : <Icon name={icon} class="w-8"/>    
+    }
+</li>

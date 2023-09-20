@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TimeLineElement from "../../components/cv/TimeLine.astro";
-import SkillElement from "../../components/cv/Skill.astro";
+import Skills from "../../components/cv/Skill.astro";
+
 import { Icon } from 'astro-icon';
 import { getCollection } from "astro:content";
 const _experiences = await getCollection("experiences");
@@ -13,16 +14,6 @@ const t = useTranslations(lang);
 
 const _skills = await getCollection("skills");
 const skills = _skills.map((e) => e.data.skills)[0]
-const languages = skills.languages
-const framworks = skills.framworks
-const libs_front = skills.libs_front
-const versionning = skills.versionning
-const installer = skills.installer
-const data = skills.data
-const monitoring = skills.monitoring
-const maps = skills.maps
-const os = skills.os
-const others = skills.others
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
@@ -104,88 +95,12 @@ const others = skills.others
     </div>
     <!-- end formations -->
 
-    <!-- certifications -->
-    <!-- <div>
-      <div class="mb-5">
-        <div class="text-3xl w-full font-bold">Certifications</div>
-      </div>
-
-      <ul class="list-disc mx-6 mb-10 grid gap-2">
-        <li>
-          <a href="#" target="_blank"> Certification Name (with link)</a>
-        </li>
-        <li>
-          <a href="#" target="_blank"> Certification Name (with link)</a>
-        </li>
-      </ul>
-    </div> -->
-    <!-- end certifications -->
-
     <!-- skills -->
     <div>
       <div class="mb-5">
         <div class="text-3xl w-full font-bold">{t("skills")}</div>
       </div>
-      <div class="text-1xl w-full my-2">Languages</div>
-      <ul class="md:columns-1 columns-1">
-        {
-          languages.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Framworks</div>
-      <ul class="md:columns-1 columns-1">
-        {
-          framworks.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Libraies & Frontend</div>
-      <ul class="md:columns-1 columns-1">
-        {
-          libs_front.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Versionning</div>
-      <ul class="md:columns-1 columns-1">
-        {
-          versionning.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Installer & Packages Manager</div>
-      <ul class="md:columns-1 columns-1">
-        {
-          installer.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Data</div>
-      <ul class="md:columns-13 columns-13">
-        {
-          data.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Monitoring</div>
-      <ul class="md:columns-1 columns-1">
-        {
-          monitoring.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Map</div>
-      <ul class="md:columns-1 columns-1">
-        {
-          maps.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">OS</div>
-      <ul class="md:columns-6 columns-6">
-        {
-          os.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
-      <div class="text-1xl w-full my-2">Others</div>
-      <ul class="md:columns-6 columns-6">
-        {
-          others.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} link={s.link} color={s.color} />)
-        }
-      </ul>
+      <Skills skills={skills} Icon={Icon} t={t}/>
     </div>
     <!-- end skills -->
   </div>

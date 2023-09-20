@@ -25,7 +25,7 @@ const fields_prototype = z.array(
     title: z.string(),
     icon: z.string().optional(),
     isSvg: z.boolean().optional(),
-    color: z.string().optional(),
+    level: z.string().optional(),
   })
 )
 
@@ -34,6 +34,14 @@ const skillsSchema = z.object({
     z.object({
       languages: fields_prototype,
       framworks: fields_prototype,
+      libs_front: fields_prototype,
+      versionning: fields_prototype,
+      installer: fields_prototype,
+      data: fields_prototype,
+      monitoring: fields_prototype,
+      maps: fields_prototype,
+      os: fields_prototype,
+      others: fields_prototype,
     })
 });
 

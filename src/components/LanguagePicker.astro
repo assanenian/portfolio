@@ -1,10 +1,16 @@
 ---
 import { languages } from '../i18n/ui';
 ---
-<ul>
-  {Object.entries(languages).map(([lang, label]) => (
-    <li>
-      <a href={`/${lang}/`}>{label}</a>
-    </li>
-  ))}
-</ul>
+
+<div class="dropdown float-right m-5">
+  <label tabindex="0" class="btn bg-transparent border-0 hover:bg-transparent">
+    <img src="/projects/svg/translate.svg" class="w-9" alt="translate">
+  </label>
+  <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-30 right-0">
+    {Object.entries(languages).map(([lang, label]) => (
+      <li>
+        <a href={`/${lang}/`}>{label}</a>
+        </li>
+        ))}
+  </ul>
+</div>

@@ -3,9 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import SideBar from "../components/SideBar.astro";
 import LanguagePicker from '../components/LanguagePicker.astro';
-
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
-
 const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, includeSidebar = true, sideBarActiveItemID } = Astro.props;
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
@@ -23,9 +21,9 @@ const t = useTranslations(lang);
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content bg-base-100">
         <Header title={SITE_TITLE} />
+        <LanguagePicker />
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
-            <LanguagePicker />
             <slot />
           </main>
         </div>

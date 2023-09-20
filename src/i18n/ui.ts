@@ -19,6 +19,7 @@ export const ui = {
     "experiences":"Experiences",
     "skills":"Skills",
     "profil":"Profil",
+    "level":"Advanced level",
   },
   fr: {
     "nav.home": "Accueil",
@@ -33,5 +34,6 @@ export const ui = {
     "experiences":"Experiences",
     "skills":"Compétences",
     "profil":"Profile",
+    "level":"Niveau avancé",
   },
 } as const;
