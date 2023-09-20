@@ -8,8 +8,6 @@ const conllection_path = (lang == "en") ? "project_en" : "project_fr"
 const _posts = await getCollection(conllection_path);
 _posts.sort((a, b) => b.data.position.valueOf() - a.data.position.valueOf());
 const posts = _posts.slice(0, 3)
-console.log(posts);
-
 ---
 
 <div>

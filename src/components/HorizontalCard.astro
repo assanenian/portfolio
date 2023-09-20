@@ -3,8 +3,6 @@ const { title, img, desc, url, scopes, stacks, target = "_blank", startDate = nu
 import dayjs from "dayjs";
 const diplayStartDate = dayjs(startDate).format("MMM-YYYY");
 const diplayendDate = dayjs(endDate).format("MMM-YYYY");
-console.log(stacks);
-
 ---
 
 <div
@@ -20,12 +18,13 @@ console.log(stacks);
       <div class="grow w-full">
         <h1 class="text-xl font-bold">
           {title}
-          <br>
+        </h1>
+        <div>
           {
             scopes &&
             scopes.map((scope) => <div class="badge badge-secondary mr-1">{scope}</div>)
           }
-        </h1>
+        </div>
         <span class="text-gray-500">{startDate && <time>{diplayStartDate}</time>} - {endDate && <time>{diplayendDate}</time>}</span>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-start">

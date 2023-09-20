@@ -26,7 +26,7 @@ import { Icon } from 'astro-icon'
         <h1 class="title my-2 text-4xl font-bold">{title}</h1><br>
         <a href={link} class="pt-3" target="_blank">{link && <Icon name="mdi:web" class="w-8 p-0 m-0"/>}</a>
       </div>
-      <div class="flex">
+      <div>
         {
           scopes &&
           scopes.map((scope) => <div class="badge badge-secondary mr-1">{scope}</div>)
@@ -37,11 +37,9 @@ import { Icon } from 'astro-icon'
       </span>
       <br />
       <div class="divider my-2"></div>
-      <div> 
-        {stacks &&
-          stacks.map(stack => <span class="badge badge-outline mr-1" title={stack}>{stack}</span>)
-        }
-      </div>
+      {stacks &&
+        stacks.map(stack => <span class="badge badge-outline mr-1" title={stack}>{stack}</span>)
+      }
       <slot />
     </article>
   </main>
