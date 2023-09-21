@@ -7,8 +7,8 @@ heroImage: "/projects/images/apas-onf.jpg"
 scopes: ["Association", "Social Action", "Custom Solution", "Collaboration", "Forest Management"]
 position: 4
 stacks:
-    - "PHP 7"
-    - "Symfony 4"
+    - "PHP"
+    - "Symfony"
     - "Elasticsearch"
     - "Restful API"
     - "GitLab"

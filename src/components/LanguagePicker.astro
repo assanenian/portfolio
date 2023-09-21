@@ -1,5 +1,8 @@
 ---
 import { languages } from '../i18n/ui';
+const current_url = Astro.url.pathname
+const needle = (current_url.indexOf('/en/') > -1) ? "/en/": "/fr/"
+const uri = current_url.split(needle).pop()
 ---
 
 <div class="dropdown float-right m-5">
@@ -9,7 +12,7 @@ import { languages } from '../i18n/ui';
   <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-30 right-0">
     {Object.entries(languages).map(([lang, label]) => (
       <li>
-        <a href={`/${lang}/`}>{label}</a>
+        <a href={`/${lang}/` + uri}>{label}</a>
         </li>
         ))}
   </ul>

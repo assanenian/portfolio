@@ -1,21 +1,20 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TimeLineElement from "../../components/cv/TimeLine.astro";
+import Download from "../../components/cv/Download.astro";
 import Skills from "../../components/cv/Skill.astro";
 import { Icon } from 'astro-icon';
 import { getCollection } from "astro:content";
 const _experiences = await getCollection("experiences");
 const experiences = _experiences.map(e => e.data.experiences)[1]
-
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
 const _skills = await getCollection("skills");
 const skills = _skills.map((e) => e.data.skills)[0]
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
+<BaseLayout title={t("CV")} sideBarActiveItemID="cv">
   <div id="cv-page">
     <!-- header -->
     <div class="mb-5">
@@ -104,6 +103,9 @@ const skills = _skills.map((e) => e.data.skills)[0]
       
     </div>
     <!-- end skills -->
+  </div>
+  <div class="relative">
+    <Download t={t} />
   </div>
 </BaseLayout>
 

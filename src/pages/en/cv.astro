@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TimeLineElement from "../../components/cv/TimeLine.astro";
+import Download from "../../components/cv/Download.astro";
 import Skills from "../../components/cv/Skill.astro";
 
 import { Icon } from 'astro-icon';
@@ -103,6 +104,9 @@ const skills = _skills.map((e) => e.data.skills)[0]
       <Skills skills={skills} Icon={Icon} t={t}/>
     </div>
     <!-- end skills -->
+  </div>
+  <div class="relative">
+    <Download t={t} />
   </div>
 </BaseLayout>
 
