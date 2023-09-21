@@ -249,6 +249,13 @@ declare module 'astro:content' {
   collection: "project_en";
   data: any
 } & { render(): Render[".mdx"] };
+"portfolio.mdx": {
+	id: "portfolio.mdx";
+  slug: "portfolio";
+  body: string;
+  collection: "project_en";
+  data: any
+} & { render(): Render[".mdx"] };
 };
 "project_fr": {
 "afyacare.mdx": {
@@ -282,6 +289,13 @@ declare module 'astro:content' {
 "mukono_vaccination_stats.mdx": {
 	id: "mukono_vaccination_stats.mdx";
   slug: "mukono_vaccination_stats";
+  body: string;
+  collection: "project_fr";
+  data: any
+} & { render(): Render[".mdx"] };
+"portfolio.mdx": {
+	id: "portfolio.mdx";
+  slug: "portfolio";
   body: string;
   collection: "project_fr";
   data: any

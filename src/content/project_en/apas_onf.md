@@ -21,6 +21,8 @@ stacks:
     - "Agile Methodology"
     - "Data Migration"
     - "Database Design and Administration"
+    - "i18n"
+    - "Poedit"
 ---
 
 Lead developer for the complete redevelopment of the CSE (Employee Representative Committee) management tool for apas-onf from **scratch** to **production**.

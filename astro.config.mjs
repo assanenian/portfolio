@@ -11,6 +11,8 @@ export default defineConfig({
   site: 'https://bdou.org',
   integrations: [mdx(), sitemap(), tailwind(), compress()],
   redirects: {
-    '/': '/en/'
+    '/': '/en/',
+    '/en/projects/portfolio': '/en/',
+    '/fr/projects/portfolio': '/fr/',
   }
 });

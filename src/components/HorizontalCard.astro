@@ -1,5 +1,5 @@
 ---
-const { title, img, desc, url, scopes, stacks, target = "_blank", startDate = null, endDate = null} = Astro.props;
+const { title, img, desc, url, scopes, stacks, target = "_blank", startDate = null, endDate = null, position} = Astro.props;
 import dayjs from "dayjs";
 const diplayStartDate = dayjs(startDate).format("MMM-YYYY");
 const diplayendDate = dayjs(endDate).format("MMM-YYYY");
@@ -25,7 +25,9 @@ const diplayendDate = dayjs(endDate).format("MMM-YYYY");
             scopes.map((scope) => <div class="badge badge-secondary mr-1">{scope}</div>)
           }
         </div>
-        <span class="text-gray-500">{startDate && <time>{diplayStartDate}</time>} - {endDate && <time>{diplayendDate}</time>}</span>
+        { position > 0 ? 
+            <span class="text-gray-500">{startDate && <time>{diplayStartDate}</time>} - {endDate && <time>{diplayendDate}</time>}</span>
+        : null }
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-start">
           {

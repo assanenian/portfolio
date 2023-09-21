@@ -38,10 +38,11 @@ const _page = (page.currentPage != page.lastPage) ? page.data.length * page.curr
               desc={post.data.description}
               startDate={post.data.startDate} 
               endDate={post.data.endDate} 
-              url={`/${lang}/projects/` + post.slug}
+              url={(post.data.position < 0) ? `` : `/${lang}/projects/` + post.slug}
               target="_self"
               scopes={post.data.scopes}
               stacks={post.data.stacks}
+              position={post.data.position}
             />
             <div class="divider my-0" />
           </>

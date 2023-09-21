@@ -21,6 +21,8 @@ stacks:
     - "Méthode Agile"
     - "MIgration de données"
     - "Conception et Administration de base de données"
+    - "i18n"
+    - "Poedit"
 ---
 
 Lead dev pour la refonte de l’outil de gestion du CSE de l’apas-onf from **scratch** to **prod**.
