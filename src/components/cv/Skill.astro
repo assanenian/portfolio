@@ -3,7 +3,7 @@ const {skills, Icon, t} = Astro.props
 import SkillElement from "./SkillElement.astro";
 const languages = skills.languages
 const framworks = skills.framworks
-const libs_front = skills.libs_front
+const libs = skills.libs
 const versionning = skills.versionning
 const installer = skills.installer
 const data = skills.data
@@ -27,7 +27,7 @@ const others = skills.others
 <div class="text-1xl w-full my-2">{t("Libs")}</div>
 <ul class="md:columns-1 columns-1">
   {
-    libs_front.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
+    libs.map(s => <SkillElement title={s.title} icon={s.icon} isSvg={s.isSvg} level={s.level} />)
   }
 </ul>
 <div class="text-1xl w-full my-2">{t("Versionning")}</div>

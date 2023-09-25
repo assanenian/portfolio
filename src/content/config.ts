@@ -34,7 +34,7 @@ const skillsSchema = z.object({
     z.object({
       languages: fields_prototype,
       framworks: fields_prototype,
-      libs_front: fields_prototype,
+      libs: fields_prototype,
       versionning: fields_prototype,
       installer: fields_prototype,
       data: fields_prototype,
