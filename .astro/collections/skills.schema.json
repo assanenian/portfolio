@@ -1,0 +1,87 @@
+{
+  "$ref": "#/definitions/skills",
+  "definitions": {
+    "skills": {
+      "type": "object",
+      "properties": {
+        "skills": {
+          "type": "object",
+          "properties": {
+            "languages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "icon": {
+                    "type": "string"
+                  },
+                  "isSvg": {
+                    "type": "boolean"
+                  },
+                  "level": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "framworks": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "libs": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "versionning": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "installer": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "data": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "monitoring": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "maps": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "os": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            },
+            "others": {
+              "$ref": "#/definitions/skills/properties/skills/properties/languages"
+            }
+          },
+          "required": [
+            "languages",
+            "framworks",
+            "libs",
+            "versionning",
+            "installer",
+            "data",
+            "monitoring",
+            "maps",
+            "os",
+            "others"
+          ],
+          "additionalProperties": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "skills"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
