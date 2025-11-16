@@ -8,8 +8,7 @@ import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://assanenian.github.io',
-  base: '/portfolio',
+  site: 'https://bdou.org',
   integrations: [mdx(), sitemap(), tailwind(), compress()],
   redirects: {
     '/': '/en/',
